@@ -1,0 +1,37 @@
+group 'com.test'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'war'
+apply plugin: 'spring-boot'
+
+sourceCompatibility = 1.5
+
+jar {
+    baseName = 'HelloWorld.HelloWorld'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.springframework.boot:spring-boot-starter-ws:1.2.2.RELEASE'
+    compile ('org.apache.cxf:cxf-rt-frontend-jaxws:3.0.4'){
+        exclude(module:"asm")
+    }
+    compile 'org.apache.cxf:cxf-rt-transports-http:3.0.4'
+    compile 'org.apache.cxf:cxf-core:3.0.4'
+    compile 'org.apache.commons:commons-math3:3.2'
+
+}
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.2.RELEASE")
+    }
+}
